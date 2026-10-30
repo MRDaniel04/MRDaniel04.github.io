@@ -5,7 +5,7 @@
       "namespace": "android_app",
       "package_name": "com.danmar.app",
       "sha256_cert_fingerprints": [
-        "REEMPLAZAR:HUELLA_SHA256_EAS",
+        "83:BC:0D:89:41:36:5A:18:94:FB:F1:D2:FE:C8:46:99:42:E9:64:F4:C5:9A:02:D4:A4:A8:3C:35:E8:F5:1E:99",
         "REEMPLAZAR:HUELLA_SHA256_PLAY_APP_SIGNING"
       ]
     }
