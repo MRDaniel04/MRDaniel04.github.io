@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Invitación a Danimar</title>
+<style>
+  body { font-family: system-ui, sans-serif; margin: 0; padding: 1.5rem; background: #ffffff; color: #1a1a1a; line-height: 1.5; }
+  main { max-width: 32rem; margin: 0 auto; }
+  h1 { font-size: 1.5rem; }
+  .codigo { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 2rem; font-weight: bold; padding: 1rem; background: #eef4fb; border-radius: 0.5rem; word-break: break-all; user-select: all; -webkit-user-select: all; }
+  .boton { display: block; margin: 0.75rem 0; padding: 0.9rem 1rem; border-radius: 0.5rem; background: #0b5cad; color: #ffffff; text-align: center; text-decoration: none; font-weight: bold; }
+  .boton.secundario { background: #ffffff; color: #0b5cad; border: 2px solid #0b5cad; }
+  [hidden] { display: none; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Te han invitado a una familia en Danimar</h1>
+  <div id="bloque-codigo" hidden>
+    <p>Tu código de invitación:</p>
+    <p class="codigo" id="codigo"></p>
+    <p>Pulsa el código para seleccionarlo y copiarlo.</p>
+  </div>
+  <div id="botones-abrir" hidden>
+    <a class="boton" id="abrir-app" href="#">Abrir en la app</a>
+    <a class="boton secundario" id="abrir-android" href="#" hidden>Abrir en la app (Android, otra vía)</a>
+  </div>
+  <!-- REEMPLAZAR:FICHA_PLAY -->
+  <a class="boton" href="https://play.google.com/store/apps/details?id=com.danmar.app">Descargar Danimar en Google Play</a>
+  <h2>Cómo unirte</h2>
+  <ol>
+    <li>Instala la app Danimar desde Google Play.</li>
+    <li>Abre la app e inicia sesión o crea tu cuenta.</li>
+    <li>Elige «Unirme a una familia» y pega el código de invitación, o abre este mismo enlace de nuevo.</li>
+  </ol>
+  <p>Las invitaciones caducan a los 15 minutos. Si ha caducado, pide una nueva a quien te invitó.</p>
+</main>
+<script>
+(function () {
+  var m = /^\/invite\/([^\/]+)\/?$/.exec(location.pathname);
+  var codigo = m ? m[1] : '';
+  if (!/^[A-Za-z0-9_-]+$/.test(codigo)) return;
+  document.getElementById('codigo').textContent = codigo;
+  document.getElementById('bloque-codigo').hidden = false;
+  document.getElementById('abrir-app').href = 'danimarapp://invite/' + codigo;
+  document.getElementById('botones-abrir').hidden = false;
+  if (/Android/i.test(navigator.userAgent)) {
+    var a = document.getElementById('abrir-android');
+    a.href = 'intent://invite/' + codigo + '#Intent;scheme=danimarapp;package=com.danmar.app;S.browser_fallback_url=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.danmar.app;end';
+    a.hidden = false;
+  }
+})();
+</script>
+</body>
+</html>

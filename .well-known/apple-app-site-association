@@ -1,0 +1,10 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["REEMPLAZAR_TEAMID.com.danmar.app"],
+        "components": [{ "/": "/invite/*" }]
+      }
+    ]
+  }
+}
